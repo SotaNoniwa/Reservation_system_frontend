@@ -1,0 +1,14 @@
+.success {
+  position: fixed;
+  top: 5px;
+  left: 25%;
+  width: 50%;
+  background-color: #4caf50;
+  color: white;
+  text-align: center;
+  padding: 15px;
+  font-size: 18px;
+  z-index: 1000;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+}
