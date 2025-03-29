@@ -8,6 +8,7 @@ import Calendar from "../../components/Calendar";
 import TimeOptions from "../../components/TimeOptions";
 
 type formData = {
+  userId: number | null;
   courseId: number;
   dateTime: string;
   durationMinutes: number;
@@ -16,6 +17,8 @@ type formData = {
 };
 
 const ReservationForm = () => {
+  const navigate = useNavigate();
+
   // Set reservable day range from 2 days after today to 31+2 days after today
   const offsetDays = 2;
   const today = new Date();
@@ -38,14 +41,13 @@ const ReservationForm = () => {
   const [selectedDateTime, setSelectedDateTime] = useState(defaultDateTime);
 
   const [formData, setFormData] = useState<formData>({
+    userId: null,
     courseId: 1,
     dateTime: "",
     durationMinutes: 120,
     numOfCustomers: 1,
     note: "",
   });
-
-  const navigate = useNavigate();
 
   // time should be in "hh:mm" format
   const setTime = (time: string) => {

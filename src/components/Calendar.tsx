@@ -1,11 +1,3 @@
-type ReservationData = {
-  courseId: number;
-  dateTime: string;
-  durationMinutes: number;
-  numOfCustomers: number;
-  note: string;
-};
-
 import React, { useEffect } from "react";
 
 type CalendarProps = {
