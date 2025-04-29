@@ -7,6 +7,9 @@ import AvailableTimeSlotForm from "./pages/admin/AvailableTimeSlotForm";
 import NotFound from "./pages/NotFound";
 import ReservationForm from "./pages/user/ReservationForm";
 import AdminHome from "./pages/admin/Home";
+import Login from "./pages/Login";
+import Register from "./pages/Register";
+import ProtectedRoute from "./pages/ProtectedRoute";
 
 const router = createBrowserRouter([
   {
@@ -15,20 +18,44 @@ const router = createBrowserRouter([
     errorElement: <NotFound />,
   },
   {
+    path: "/auth/login",
+    element: <Login />,
+  },
+  {
+    path: "/auth/register",
+    element: <Register />,
+  },
+  {
     path: "/user",
-    element: <UserHome />,
+    element: (
+      <ProtectedRoute requiredRole="ROLE_USER">
+        <UserHome />
+      </ProtectedRoute>
+    ),
   },
   {
     path: "/user/reservation-form",
-    element: <ReservationForm />,
+    element: (
+      <ProtectedRoute requiredRole="ROLE_USER">
+        <ReservationForm />
+      </ProtectedRoute>
+    ),
   },
   {
     path: "/admin",
-    element: <AdminHome />,
+    element: (
+      <ProtectedRoute requiredRole="ROLE_ADMIN">
+        <AdminHome />
+      </ProtectedRoute>
+    ),
   },
   {
     path: "/admin/available-time-slot-form",
-    element: <AvailableTimeSlotForm />,
+    element: (
+      <ProtectedRoute requiredRole="ROLE_ADMIN">
+        <AvailableTimeSlotForm />
+      </ProtectedRoute>
+    ),
   },
 ]);
 
