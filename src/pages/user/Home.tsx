@@ -1,7 +1,5 @@
 import { Link } from "react-router-dom";
 import Notification from "../../components/Notification";
-import { useEffect, useState } from "react";
-import { jwtDecode } from "jwt-decode";
 
 const Home = () => {
   return (

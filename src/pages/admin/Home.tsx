@@ -2,13 +2,7 @@ import { Link } from "react-router-dom";
 import Notification from "../../components/Notification";
 import { useEffect, useState } from "react";
 import { jwtDecode } from "jwt-decode";
-
-type jwtPayload = {
-  username: string;
-  email: string;
-  roles: { name: string }[];
-  [key: string]: any;
-};
+import { JwtPayload } from "../../types/JwtPayload";
 
 const Home = () => {
   const [username, setUsername] = useState<string | null>(null);
@@ -19,7 +13,7 @@ const Home = () => {
     const token = localStorage.getItem("token");
     if (token) {
       try {
-        const decodedToken = jwtDecode<jwtPayload>(token);
+        const decodedToken = jwtDecode<JwtPayload>(token);
         setUsername(decodedToken.username);
         setEmail(decodedToken.sub);
         setRoles(decodedToken.roles);

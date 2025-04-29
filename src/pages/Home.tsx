@@ -1,13 +1,7 @@
 import { jwtDecode } from "jwt-decode";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-
-type jwtPayload = {
-  username: string;
-  email: string;
-  roles: { name: string }[];
-  [key: string]: any;
-};
+import { JwtPayload } from "../types/JwtPayload";
 
 const Home = () => {
   const [username, setUsername] = useState<string | null>(null);
@@ -18,7 +12,7 @@ const Home = () => {
     const token = localStorage.getItem("token");
     if (token) {
       try {
-        const decodedToken = jwtDecode<jwtPayload>(token);
+        const decodedToken = jwtDecode<JwtPayload>(token);
         setUsername(decodedToken.username);
         setEmail(decodedToken.sub);
         setRoles(decodedToken.roles);
@@ -40,6 +34,7 @@ const Home = () => {
       console.log("Roles: ", roles);
     }
   }, [username, email, roles]);
+
   return (
     <>
       <h3>Home Page</h3>
