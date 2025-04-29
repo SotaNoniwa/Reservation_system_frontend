@@ -16,11 +16,18 @@ const AvailableTimeSlotForm = () => {
     const startTime = formatLocalDateTime(startDate, startHour);
     const endTime = formatLocalDateTime(endDate, endHour);
 
+    const token = localStorage.getItem("token");
     await axios
-      .post("http://localhost:8080/api/admin/available-time-slot", {
-        startTime,
-        endTime,
-      })
+      .post(
+        "http://localhost:8080/api/admin/available-time-slot",
+        {
+          startTime,
+          endTime,
+        },
+        {
+          headers: { Authorization: `Bearer ${token}` },
+        }
+      )
       .then((res) => {
         console.log(res.data);
         navigate("/admin", {

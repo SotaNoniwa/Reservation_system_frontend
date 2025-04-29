@@ -1,7 +1,7 @@
 import { jwtDecode } from "jwt-decode";
 import React, { JSX } from "react";
 import { Navigate } from "react-router-dom";
-import { JwtPayload } from "../types/JwtPayload";
+import { JwtPayload } from "../../types/JwtPayload";
 
 const ProtectedRoute = ({
   children,

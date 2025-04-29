@@ -2,7 +2,7 @@ import axios from "axios";
 import { jwtDecode } from "jwt-decode";
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { jwtPayload } from "./ProtectedRoute";
+import { JwtPayload } from "../../types/JwtPayload";
 
 const Login = () => {
   const [email, setEmail] = useState<string>("");
@@ -24,7 +24,7 @@ const Login = () => {
       const token = res.data;
       localStorage.setItem("token", token);
 
-      const decodedToken = jwtDecode<jwtPayload>(token);
+      const decodedToken = jwtDecode<JwtPayload>(token);
       const userRoles = decodedToken.roles.map((role) => role.name);
       const isAdmin = userRoles.includes("ROLE_ADMIN");
 

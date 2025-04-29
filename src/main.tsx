@@ -7,9 +7,9 @@ import AvailableTimeSlotForm from "./pages/admin/AvailableTimeSlotForm";
 import NotFound from "./pages/NotFound";
 import ReservationForm from "./pages/user/ReservationForm";
 import AdminHome from "./pages/admin/Home";
-import Login from "./pages/Login";
-import Register from "./pages/Register";
-import ProtectedRoute from "./pages/ProtectedRoute";
+import Login from "./pages/auth/Login";
+import Register from "./pages/auth/Register";
+import ProtectedRoute from "./pages/auth/ProtectedRoute";
 
 const router = createBrowserRouter([
   {
